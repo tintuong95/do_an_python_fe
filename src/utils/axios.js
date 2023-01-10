@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: process.env.NEXT_PUBLIC_HOST,
+    baseURL: process.env.VUE_APP_HOST,
     timeout: 1000,
 });
