@@ -12,7 +12,8 @@ import ClassUpdate from "../views/Class/ClassUpdate.vue"
 const routes = [
     { path: '/', component: DashBoard },
     { path: '/about', component: About },
-    { path: '/student-list', component: StudentList },
+    { path: '/students', component: StudentList },
+    { path: '/students/:id', component: StudentList },
     { path: '/student-create', component: StudentCreate },
     { path: '/student-update/:id', component: StudentUpdate },
     { path: '/class-list', component: ClassList },

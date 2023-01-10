@@ -49,11 +49,11 @@
         <label for="">Lớp học</label>
       </div>
       <div class="col-span-5">
-        <input
-          v-model="classId"
-          class="border w-full rounded p-2"
-          type="text"
-        />
+        <a-select  v-model:value="classId" style="width: 220px" @change="handleChange"> 
+         <a-select-option value="">Vui lòng chọn</a-select-option>
+          <a-select-option v-for="item in classList" :key="item.id">
+      {{ item?.name }}</a-select-option>
+        </a-select>
       </div>
     </div>
     <hr class="my-6" />
@@ -77,11 +77,11 @@
         <div class="flex items-center gap-2">
           <input id="0" @input="getVal" type="radio" value="0" name="sex" />
 
-            <label for="1">Nữ</label>
+          <label for="1">Nữ</label>
         </div>
       </div>
     </div>
-     <hr class="my-6" />
+    <hr class="my-6" />
     <div class="grid grid-cols-6">
       <div class="col-span-1">
         <label for="">Trạng thái</label>
@@ -127,7 +127,9 @@
 
 <script>
 import { notification } from "ant-design-vue";
+import { getListClass } from "../../apis/class";
 import { createStudent } from "../../apis/student";
+import _ from "lodash";
 
 export default {
   name: "PyDaStudentCreate",
@@ -140,8 +142,12 @@ export default {
       address: "",
       classId: "",
       status: 1,
-      sex:1,
+      sex: 1,
+      classList: [],
     };
+  },
+  created() {
+    this.fetchListClass();
   },
   methods: {
     fetchCreateStudent() {
@@ -166,6 +172,18 @@ export default {
     getVal(evt) {
       const { name, value } = evt.target;
       this[name] = value;
+    },
+    fetchListClass() {
+      const keys = ["id", "name", "year", "note", "status"];
+      getListClass()
+        .then((result) => {
+          this.classList = _.map(result.data, (item) =>
+            _.zipObject(keys, item)
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };

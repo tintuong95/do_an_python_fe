@@ -10,7 +10,7 @@
       }"
     >
       <div class="logo">
-        <h1 class="text-xl text-center my-4 text-green-700">AppV1.0</h1>
+        <h1 class="text-xl text-center my-4 text-green-700">Name</h1>
       </div>
       <a-menu v-model:selectedKeys="selectedKeys" theme="white" mode="inline">
          <router-link to="/">
@@ -32,7 +32,7 @@
             <span>Tạo lớp học </span>
           </a-menu-item>
         </router-link>
-        <router-link to="/student-list">
+        <router-link to="/students">
           <a-menu-item key="4">
             <user-outlined />
             <span>Sinh viên </span>

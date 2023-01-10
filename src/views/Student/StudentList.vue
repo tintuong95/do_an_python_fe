@@ -117,6 +117,7 @@ export default defineComponent({
   },
   created() {
     this.fetchListStudent();
+    this.classId = this.$route.params?.id || null;
   },
   methods: {
     fetchListStudent() {
@@ -132,8 +133,15 @@ export default defineComponent({
       ];
       getListStudent()
         .then((result) => {
-          console.log(result.data);
           this.data = _.map(result.data, (item) => _.zipObject(keys, item));
+          this.data = _.filter(this.data, (item) => {
+            console.log("this.classId",this.classId)
+            if (this.classId) {
+              return item.classId == this.classId;
+            } else {
+              return true;
+            }
+          });
         })
         .catch((err) => {
           console.log(err);

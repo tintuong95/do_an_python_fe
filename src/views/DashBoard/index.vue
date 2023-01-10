@@ -1,22 +1,22 @@
 <template>
   <div class="grid grid-cols-3 gap-5">
-    <div class="cols-span-1 p-6 bg-blue-50 rounded shadow text-xl">
-      Tổng số lớp: {{ classData.length }}
+    <div class="cols-span-1 p-10 border bg-blue-50 rounded shadow-sm text-xl">
+      Tổng số lớp: <span class="text-3xl font-semibold text-gray-600">{{ classData.length }}</span>
     </div>
-    <div class="cols-span-1 p-6 bg-blue-50 rounded shadow text-xl">
-      Số lớp hoạt động: {{ countClassActive }}
+    <div class="cols-span-1 p-10 border bg-blue-50 rounded shadow-sm text-xl">
+      Số lớp hoạt động :  <span class="text-3xl font-semibold text-gray-600">{{ countClassActive }}</span>
     </div>
-    <div class="cols-span-1 p-6 bg-blue-50 rounded shadow text-xl">
-      Số lớp kết thúc: {{ countClassDeactive }}
+    <div class="cols-span-1 p-10 border bg-blue-50 rounded shadow-sm text-xl">
+      Số lớp kết thúc : <span class="text-3xl font-semibold text-gray-600">{{ countClassDeactive }}</span>
     </div>
-    <div class="cols-span-1 p-6 bg-blue-50 rounded shadow text-xl">
-      Tổng số sinh viên: {{studentData.length  }}
+    <div class="cols-span-1 p-10 border bg-blue-50 rounded shadow-sm text-xl">
+      Tổng số sinh viên : <span class="text-3xl font-semibold text-gray-600">{{studentData.length  }}</span>
     </div>
-    <div class="cols-span-1 p-6 bg-blue-50 rounded shadow text-xl">
-      Số sinh viên hoạt động: {{ countstudentActive }}
+    <div class="cols-span-1 p-10 border bg-blue-50 rounded shadow-sm text-xl">
+      Số sinh viên hoạt động : <span class="text-3xl font-semibold text-gray-600">{{ countstudentActive }}</span>
     </div>
-    <div class="cols-span-1 p-6 bg-blue-50 rounded shadow text-xl">
-      Số sinh viên đình chỉ:{{ countStudentDeactive }}
+    <div class="cols-span-1 p-10 border bg-blue-50 rounded shadow-sm text-xl">
+      Số sinh viên đình chỉ : <span class="text-3xl font-semibold text-gray-600">{{ countStudentDeactive }}</span>
     </div>
   </div>
 </template>

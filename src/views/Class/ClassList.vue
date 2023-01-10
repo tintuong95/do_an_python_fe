@@ -18,9 +18,11 @@
             style="background-color: #f56a00"
             >{{ record.name.slice(0, 1) }}</a-avatar
           >
-          <a>
+         <RouterLink :to="'/students/'+record.id">
+           <a>
             {{ record.name }}
           </a>
+         </RouterLink>
         </span>
       </template>
       <template v-else-if="column.key === 'status'">
