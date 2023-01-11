@@ -66,6 +66,7 @@ import { defineComponent } from "vue";
 import { deleteClassById, getListClass } from "../../apis/class";
 import ButtonCreate from "../../components/ButtonCreate.vue";
 import _ from "lodash";
+import emitter from "../../utils/mitt";
 
 export default defineComponent({
   components: {
@@ -111,6 +112,7 @@ export default defineComponent({
   },
   methods: {
     fetchListClass() {
+       emitter.emit("setLoading",true)
       const keys = ["id", "name", "year", "note", "status"];
       getListClass()
         .then((result) => {
@@ -118,6 +120,8 @@ export default defineComponent({
         })
         .catch((err) => {
           console.log(err);
+        }).finally(()=>{
+           emitter.emit("setLoading",false)
         });
     },
     getClassDetails(row) {

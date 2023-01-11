@@ -5,5 +5,11 @@ import "./index.css"
 import 'ant-design-vue/dist/antd.css';
 import router from './routes';
 
+import mitt from "mitt";
+const emitter = mitt();
 
-createApp(App).use(antd).use(router).mount('#app')
+const app =createApp(App).use(antd).use(router)
+
+app.config.globalProperties.emitter = emitter;
+
+app.mount("#app");

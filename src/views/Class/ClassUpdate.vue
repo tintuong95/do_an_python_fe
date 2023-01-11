@@ -23,7 +23,6 @@
       :content="classDetails.note"
       label="Ghi chú "
     />
-
   </form>
 </template>
 
@@ -32,6 +31,7 @@ import { getClassById, updateClassById } from "../../apis/class";
 import BaseInput from "../../components/BaseInput.vue";
 import { notification } from "ant-design-vue";
 import _ from "lodash";
+import emitter from "../../utils/mitt";
 export default {
   name: "PyDaStudentCreate",
   data() {
@@ -47,7 +47,7 @@ export default {
     fetchClassDetails() {
       getClassById(this.classId)
         .then((result) => {
-          const keys = ["id", "name", "year", "note","status"];
+          const keys = ["id", "name", "year", "note", "status"];
           this.classDetails = _.zipObject(keys, result.data[0]);
         })
         .then((error) => {
@@ -55,6 +55,7 @@ export default {
         });
     },
     fetchUpdateClass(payload, name) {
+      emitter.emit("setLoading", true);
       const newDetails = _.assign(this.classDetails, { [name]: payload });
       const data = new FormData();
       data.append("name", newDetails.name);
@@ -69,6 +70,9 @@ export default {
         .catch((err) => {
           console.log(err);
           notification.error({ message: "Cập nhật thất bại!" });
+        })
+        .finally(() => {
+          emitter.emit("setLoading", false);
         });
     },
   },

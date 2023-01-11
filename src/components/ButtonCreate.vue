@@ -1,5 +1,5 @@
 <template>
- <div class=" w-full">
+ <div class=" w-full bg-white">
      <router-link :to="toLink">
       <span type="button" class="border flex p-7 justify-center  rounded border-dashed border-blue-400">
       {{name.toUpperCase()}}

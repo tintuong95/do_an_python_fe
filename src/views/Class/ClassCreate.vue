@@ -76,6 +76,7 @@
 <script>
 import { notification } from "ant-design-vue";
 import { createClass } from "../../apis/class";
+import emitter from "../../utils/mitt";
 
 export default {
   name: "PyDaStudentCreate",
@@ -93,6 +94,7 @@ export default {
 
   methods: {
     fetchCreateClass() {
+       emitter.emit("setLoading",true)
       let data = new FormData();
       data.append("name", this.name);
       data.append("year", this.year);
@@ -106,6 +108,8 @@ export default {
         .catch((err) => {
           console.log(err);
           notification.error({ message: "Tạo mới thất bại!" });
+        }).finally(()=>{
+           emitter.emit("setLoading",false)
         });
     },
     getVal(evt) {

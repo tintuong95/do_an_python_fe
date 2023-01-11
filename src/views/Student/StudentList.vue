@@ -67,6 +67,7 @@ import { deleteStudentById, getListStudent } from "../../apis/student";
 import ButtonCreate from "../../components/ButtonCreate.vue";
 import _ from "lodash";
 import { FileOutlined, DeleteOutlined } from "@ant-design/icons-vue";
+import emitter from "../../utils/mitt";
 
 export default defineComponent({
   components: {
@@ -121,6 +122,7 @@ export default defineComponent({
   },
   methods: {
     fetchListStudent() {
+       emitter.emit("setLoading",true)
       const keys = [
         "id",
         "name",
@@ -135,7 +137,6 @@ export default defineComponent({
         .then((result) => {
           this.data = _.map(result.data, (item) => _.zipObject(keys, item));
           this.data = _.filter(this.data, (item) => {
-            console.log("this.classId",this.classId)
             if (this.classId) {
               return item.classId == this.classId;
             } else {
@@ -145,6 +146,8 @@ export default defineComponent({
         })
         .catch((err) => {
           console.log(err);
+        }).finally(()=>{
+           emitter.emit("setLoading",false)
         });
     },
     getClassDetails(row) {

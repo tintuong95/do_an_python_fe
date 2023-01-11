@@ -130,6 +130,7 @@ import { notification } from "ant-design-vue";
 import { getListClass } from "../../apis/class";
 import { createStudent } from "../../apis/student";
 import _ from "lodash";
+import emitter from "../../utils/mitt";
 
 export default {
   name: "PyDaStudentCreate",
@@ -151,6 +152,7 @@ export default {
   },
   methods: {
     fetchCreateStudent() {
+      emitter.emit("setLoading",true)
       const data = new FormData();
       data.append("name", this.name);
       data.append("code", this.code);
@@ -167,6 +169,8 @@ export default {
         .catch((err) => {
           console.log(err);
           notification.error({ message: "Cập nhật thất bại!" });
+        }).finally(()=>{
+           emitter.emit("setLoading",false)
         });
     },
     getVal(evt) {
