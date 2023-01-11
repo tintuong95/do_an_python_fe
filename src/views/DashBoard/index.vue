@@ -1,22 +1,22 @@
 <template>
   <div class="grid grid-cols-3 gap-5">
-    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-xl">
+    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-3xl font-extrabold text-gray-400">
       Tổng số lớp: <span class="text-3xl font-semibold text-gray-600">{{ classData.length }}</span>
     </div>
-    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-xl">
-      Số lớp hoạt động :  <span class="text-3xl font-semibold text-gray-600">{{ countClassActive }}</span>
+    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-3xl font-extrabold text-gray-400">
+      Lớp hoạt động :  <span class="text-3xl font-semibold text-gray-600">{{ countClassActive }}</span>
     </div>
-    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-xl">
-      Số lớp kết thúc : <span class="text-3xl font-semibold text-gray-600">{{ countClassDeactive }}</span>
+    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-3xl font-extrabold text-gray-400">
+      Lớp kết thúc : <span class="text-3xl font-semibold text-gray-600">{{ countClassDeactive }}</span>
     </div>
-    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-xl">
+    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-3xl font-extrabold text-gray-400">
       Tổng số sinh viên : <span class="text-3xl font-semibold text-gray-600">{{studentData.length  }}</span>
     </div>
-    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-xl">
-      Số sinh viên hoạt động : <span class="text-3xl font-semibold text-gray-600">{{ countstudentActive }}</span>
+    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-3xl font-extrabold text-gray-400">
+      Sinh viên hoạt động : <span class="text-3xl font-semibold text-gray-600">{{ countstudentActive }}</span>
     </div>
-    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-xl">
-      Số sinh viên đình chỉ : <span class="text-3xl font-semibold text-gray-600">{{ countStudentDeactive }}</span>
+    <div class="cols-span-1 p-10 border bg-white rounded shadow-sm text-3xl font-extrabold text-gray-400">
+      Sinh viên đình chỉ : <span class="text-3xl font-semibold text-gray-600">{{ countStudentDeactive }}</span>
     </div>
   </div>
     <a-table class="mt-10" :pagination="false" :columns="columns" :data-source="studentData.slice(0,7)">
